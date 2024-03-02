@@ -1,4 +1,24 @@
-const checkoutLengthStr = function(str, strLength) {
+const MINUTES_PER_HOUR = 60;
+
+const checkWorkDay = function(startWorkDay, endWorkDay, startMeeting, lengthMeeting) {
+  const startMeetingMinutes = Number(startMeeting.split(':')[0]) * MINUTES_PER_HOUR + Number(startMeeting.split(':')[1]);
+  const endMeetingMinutes = startMeetingMinutes + lengthMeeting;
+  const startWorDayMinutes = Number(startWorkDay.split(':')[0]) * MINUTES_PER_HOUR + Number(startWorkDay.split(':')[1]);
+  const endWorkDayMinutes = Number(endWorkDay.split(':')[0]) * MINUTES_PER_HOUR + Number(endWorkDay.split(':')[1]);
+  if (endMeetingMinutes > endWorkDayMinutes || startMeetingMinutes < startWorDayMinutes) {
+    return false;
+  }
+  return true;
+};
+
+checkWorkDay('08:00', '17:30', '14:00', 90);
+checkWorkDay('8:0', '10:0', '8:0', 120);
+checkWorkDay('08:00', '14:30', '14:00', 90);
+checkWorkDay('14:00', '17:30', '08:0', 90);
+checkWorkDay('8:00', '17:30', '08:00', 900);
+
+
+/*const checkoutLengthStr = function(str, strLength) {
   if (typeof str === 'string') {
     return (str.length <= strLength);
   }
@@ -47,3 +67,4 @@ extractNamber('1 кефир, 0.5 батона');
 extractNamber('агент 007');
 extractNamber('а я томат');
 
+*/

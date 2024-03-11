@@ -1,5 +1,5 @@
-import {createObject} from './setup.js';
+import {drawingThumbnails} from './drawing-thumbnails.js';
 
 
-createObject();
-//console.log(createObject());
+drawingThumbnails();
+
